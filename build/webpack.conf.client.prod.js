@@ -61,7 +61,7 @@ const cssLoaders = (modulesCss) => {
       }
     },
     {
-      loader: 'stylus-loader',
+      loader: 'sass-loader',
       options: {
         sourceMap: true,
         import: []
@@ -102,7 +102,7 @@ module.exports = merge(base, {
         include: r('src')
       },
       {
-        test: /\.(css|styl)$/,
+        test: /\.(css|scss)$/,
         oneOf: [
           {
             resource: /node_modules/,

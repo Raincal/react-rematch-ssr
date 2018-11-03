@@ -34,7 +34,7 @@ module.exports = merge(base, {
         include: r('src')
       },
       {
-        test: /\.(css|styl)$/,
+        test: /\.(css|scss)$/,
         loader: 'ignore-loader'
       }
     ]

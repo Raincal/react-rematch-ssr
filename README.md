@@ -19,7 +19,7 @@ npm start
 - 设置title及meta
 - 路由懒加载（支持服务端渲染）
 - eslint规范代码（airbnb）
-- 内置css|stylus，支持css modules（默认启用）
+- 内置css|sass，支持css modules（默认启用）
 - 使用husky和lint-staged规范提交的代码
 - 异步路由跳转
 

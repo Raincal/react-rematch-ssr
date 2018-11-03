@@ -20,8 +20,8 @@
                 ["react-css-modules", {
                     "generateScopedName": "[path]_[name]_[local]_[hash:base64:5]",
                     "filetypes": {
-                        ".styl": {
-                            "syntax": "sugarss"
+                        ".scss": {
+                            "syntax": "postcss-scss"
                         }
                     },
                     "handleMissingStyleName": "warn"
@@ -33,8 +33,8 @@
                 ["react-css-modules", {
                     "generateScopedName": "[local]_[hash:base64:5]",
                     "filetypes": {
-                        ".styl": {
-                            "syntax": "sugarss"
+                        ".scss": {
+                            "syntax": "postcss-scss"
                         }
                     }
                 }]

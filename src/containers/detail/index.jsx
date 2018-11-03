@@ -2,7 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import './style.styl'
+import './style.scss'
 
 const mapState = state => ({
   detail: state.detail
