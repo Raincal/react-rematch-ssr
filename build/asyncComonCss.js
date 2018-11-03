@@ -13,49 +13,49 @@ const prefixPath = `${publicPath}static/css/`
 const getCssFile = files => files.filter(file => !file.endsWith('.map'))
 
 const categoryCss = files => {
-    // 从多个异步chunk的css中提取的公共部分
-    // 如page-a.css和page-b.css有公共部分，提取出公共部分为page-a~page-b.css
-    // 存放page-a~page-b.css这种类型的css
-    const commonCss = []
-    // 所有其他css
-    const baseCss = []
+  // 从多个异步chunk的css中提取的公共部分
+  // 如page-a.css和page-b.css有公共部分，提取出公共部分为page-a~page-b.css
+  // 存放page-a~page-b.css这种类型的css
+  const commonCss = []
+  // 所有其他css
+  const baseCss = []
 
-    files.forEach(file => {
-        if (file.includes('~')) {
-            commonCss.push(file)
-        } else {
-            baseCss.push(file)
-        }
-    })
-
-    return {
-        baseCss,
-        commonCss
+  files.forEach(file => {
+    if (file.includes('~')) {
+      commonCss.push(file)
+    } else {
+      baseCss.push(file)
     }
+  })
+
+  return {
+    baseCss,
+    commonCss
+  }
 }
 
 const dir = path.resolve(__dirname, '../dist/static/css')
 
 fs.readdir(dir, (err, files) => {
-    if (err) {
-        return console.error(err)
-    }
+  if (err) {
+    return console.error(err)
+  }
 
-    const cssFiles = getCssFile(files)
-    const { baseCss, commonCss } = categoryCss(cssFiles)
+  const cssFiles = getCssFile(files)
+  const { baseCss, commonCss } = categoryCss(cssFiles)
 
-    const res = {}
-    baseCss.forEach(file => {
-        const name = file.split('.').shift()
+  const res = {}
+  baseCss.forEach(file => {
+    const name = file.split('.').shift()
         const pattern = new RegExp(`(^${name}|~${name})[\.~]`) // eslint-disable-line
 
-        commonCss.forEach(commonFile => {
-            if (pattern.test(commonFile)) {
-                res[file] || (res[file] = [])
-                res[file].push(prefixPath + commonFile)
-            }
-        })
+    commonCss.forEach(commonFile => {
+      if (pattern.test(commonFile)) {
+        res[file] || (res[file] = [])
+        res[file].push(prefixPath + commonFile)
+      }
     })
+  })
 
-    fs.writeFileSync(path.resolve(__dirname, '../dist/asyncCommonCss.json'), JSON.stringify(res, null, 4))
+  fs.writeFileSync(path.resolve(__dirname, '../dist/asyncCommonCss.json'), JSON.stringify(res, null, 4))
 })

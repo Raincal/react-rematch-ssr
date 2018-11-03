@@ -7,5 +7,5 @@ const template = fs.readFileSync(path.resolve(__dirname, '../../dist/server.ejs'
 const stats = require('../../dist/react-loadable.json')
 
 module.exports = function prodRender(req, res, next) {
-    render(template, serverBundle, req, res, next, stats)
+  render(template, serverBundle, req, res, next, stats)
 }
