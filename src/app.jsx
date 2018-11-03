@@ -6,19 +6,19 @@ import ProgressBar from './components/progressBar'
 import './app.css'
 
 export default function App(props) {
-    const { route } = props
+  const { route } = props
 
-    return (
-        <div styleName="app">
-            <ProgressBar />
-            <nav styleName="nav">
-                <Link to="/topics">topics</Link>
-            </nav>
-            {renderRoutes(route.routes)}
-        </div>
-    )
+  return (
+    <div styleName="app">
+      <ProgressBar />
+      <nav styleName="nav">
+        <Link to="/topics">topics</Link>
+      </nav>
+      {renderRoutes(route.routes)}
+    </div>
+  )
 }
 
 App.propTypes = {
-    route: PropTypes.object.isRequired
+  route: PropTypes.object.isRequired
 }

@@ -1,8 +1,8 @@
 export const api = {
-    state: {},
-    reducers: {
-        initApi(state, payload) {
-            return payload
-        }
+  state: {},
+  reducers: {
+    initApi(state, payload) {
+      return payload
     }
+  }
 }
