@@ -7,6 +7,7 @@ const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const hash = require('hash-sum')
 const base = require('./webpack.conf.base')
 const config = require('./config')
@@ -199,6 +200,10 @@ module.exports = merge(base, {
       } else {
         return modules[0].id
       }
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      generateStatsFile: true
     })
   ]
 })

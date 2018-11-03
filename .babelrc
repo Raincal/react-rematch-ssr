@@ -1,9 +1,10 @@
 {
     "presets": [
-        ["@babel/preset-env", {
-            "modules": false
+        ["@babel/env", {
+            "modules": false,
+            "useBuiltIns": "usage"
         }],
-        "@babel/preset-react"
+        "@babel/react"
     ],
     "plugins": [
         "react-loadable/babel",
