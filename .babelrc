@@ -1,45 +1,57 @@
 {
-    "presets": [
-        ["@babel/env", {
-            "modules": false,
-            "useBuiltIns": "usage"
-        }],
-        "@babel/react"
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "modules": false,
+        "useBuiltIns": "usage"
+      }
     ],
-    "plugins": [
-        "react-loadable/babel",
-        ["@babel/plugin-proposal-decorators", {
-            "legacy": true
-        }],
-        "@babel/plugin-proposal-class-properties",
-        "@babel/plugin-syntax-dynamic-import",
-        "react-hot-loader/babel"
+    "@babel/react"
+  ],
+  "plugins": [
+    "react-loadable/babel",
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
     ],
-    "env": {
-        "development": {
-            "plugins": [
-                ["react-css-modules", {
-                    "generateScopedName": "[path]_[name]_[local]_[hash:base64:5]",
-                    "filetypes": {
-                        ".scss": {
-                            "syntax": "postcss-scss"
-                        }
-                    },
-                    "handleMissingStyleName": "warn"
-                }]
-            ]
-        },
-        "production": {
-            "plugins": [
-                ["react-css-modules", {
-                    "generateScopedName": "[local]_[hash:base64:5]",
-                    "filetypes": {
-                        ".scss": {
-                            "syntax": "postcss-scss"
-                        }
-                    }
-                }]
-            ]
-        }
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-syntax-dynamic-import",
+    "react-hot-loader/babel"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "react-css-modules",
+          {
+            "generateScopedName": "[path]_[name]_[local]_[hash:base64:5]",
+            "filetypes": {
+              ".scss": {
+                "syntax": "postcss-scss"
+              }
+            },
+            "handleMissingStyleName": "warn"
+          }
+        ]
+      ]
+    },
+    "production": {
+      "plugins": [
+        [
+          "react-css-modules",
+          {
+            "generateScopedName": "[local]_[hash:base64:5]",
+            "filetypes": {
+              ".scss": {
+                "syntax": "postcss-scss"
+              }
+            }
+          }
+        ]
+      ]
     }
+  }
 }
