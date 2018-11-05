@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const Loadable = require('react-loadable')
+const compression = require('compression')
 
 const app = express()
 
@@ -18,6 +19,7 @@ if (isDev) {
   const devRender = require('./ssr/devRender')
   app.get('*', devRender)
 } else {
+  app.use(compression())
   app.use(express.static(path.resolve(__dirname, '../dist')))
 
   const prodRender = require('./ssr/prodRender')
