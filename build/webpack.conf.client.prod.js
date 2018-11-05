@@ -8,9 +8,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const AutoDllPlugin = require('autodll-webpack-plugin')
 const hash = require('hash-sum')
 const base = require('./webpack.conf.base')
 const config = require('./config')
+const modules = require('./modules')
 
 const r = dir => path.resolve(__dirname, '..', dir)
 const seen = new Set()
@@ -98,7 +100,10 @@ module.exports = merge(base, {
       {
         test: /\.(js|jsx)$/,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true
+          }
         },
         include: r('src')
       },
@@ -166,6 +171,13 @@ module.exports = merge(base, {
         removeAttributeQuotes: true
       },
       chunksSortMode: 'dependency'
+    }),
+    new AutoDllPlugin({
+      inject: true,
+      filename: 'dll.[name].[chunkhash:8].js',
+      entry: {
+        vendor: modules
+      }
     }),
     new webpack.DefinePlugin({
       'process.env': {
