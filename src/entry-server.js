@@ -1,4 +1,3 @@
-import 'regenerator-runtime/runtime'
 import React from 'react'
 import { StaticRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
