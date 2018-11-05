@@ -1,5 +1,4 @@
 import axios from 'axios'
-import qs from 'qs'
 
 const instance = axios.create({
   baseURL: 'https://cnodejs.org/api/v1'
@@ -29,7 +28,7 @@ class Service {
       ? { ...config.headers, cookie: this.cookie }
       : { ...config.headers }
 
-    return instance.post(url, qs.stringify(data), {
+    return instance.post(url, JSON.stringify(data), {
       ...config,
       headers
     })
