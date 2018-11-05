@@ -21,8 +21,8 @@
       "git add"
     ]
   },
-  "author": "Kim09",
-  "license": "ISC",
+  "author": "Raincal",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
