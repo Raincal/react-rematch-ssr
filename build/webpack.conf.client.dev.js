@@ -75,9 +75,6 @@ module.exports = merge(base, {
     publicPath: config.dev.publicPath,
     chunkFilename: 'static/js/[name].js'
   },
-  resolve: {
-    mainFields: ['jsnext:main', 'browser', 'main']
-  },
   module: {
     rules: [
       {
