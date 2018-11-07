@@ -9,6 +9,7 @@ const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugi
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const AutoDllPlugin = require('autodll-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const hash = require('hash-sum')
 const base = require('./webpack.conf.base')
 const config = require('./config')
@@ -158,6 +159,10 @@ module.exports = merge(base, {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(['dist'], {
+      root: r('.'),
+      verbose: true
+    }),
     new HtmlWebpackPlugin({
       filename: 'server.ejs',
       template: '!!ejs-compiled-loader!' + r('public/server.template.ejs'),
